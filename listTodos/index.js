@@ -11,6 +11,8 @@ module.exports = async function (context, req) {
 
     const results = await todoCollection.find({ username: "in28minutes" }).toArray();
 
+    await connection.close();
+
     return {
         // status: 200, /* Defaults to 200 */
         body: JSON.stringify(results).replace(/_id/g, "id")
